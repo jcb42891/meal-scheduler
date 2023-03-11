@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   scope(:path => '/api') do
     get '/meals', to: 'meals#all_meals'
+    post '/meals/add', to: 'meals#add_meal'
   end
 
   # Redirect non-api routes back to the index page,
