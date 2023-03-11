@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Summary
 
-Things you may want to cover:
+This app is a tool to help plan daily/weekly meals and offers the following features:
 
-* Ruby version
+- Create meals
 
-* System dependencies
+  - "Home cooked" includes a meal title and recipe
+  - "Ordered in" includes the name of a restaurant & link to menu
 
-* Configuration
+- Plan a meal for a given day
+- View all planned meals for a given day, week, month
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Generate grocery list for all meals
+- Start with all meals for the week, maybe add UX to pick ranges later
