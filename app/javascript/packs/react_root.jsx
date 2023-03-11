@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Counter from "../components/Counter";
+import App from "../components/App";
 
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
-    <Counter />,
+    <App />,
     document.body.appendChild(document.createElement("div"))
   );
 });

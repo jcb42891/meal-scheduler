@@ -6,7 +6,7 @@ This app is a tool to help plan daily/weekly meals and offers the following feat
 
 - Create meals
 
-  - "Home cooked" includes a meal title and recipe
+  - "Home cooked" includes a meal title and ingredients
   - "Ordered in" includes the name of a restaurant & link to menu
 
 - Plan a meal for a given day
