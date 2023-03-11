@@ -3,7 +3,7 @@ const App = () => {
   let [meals, setMeals] = useState(null);
 
   useEffect(() => {
-    fetch("/meals")
+    fetch("/api/meals")
       .then((response) => response.json())
       .then((data) => setMeals(data));
   }, []);
