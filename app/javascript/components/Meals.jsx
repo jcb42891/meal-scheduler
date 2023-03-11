@@ -24,24 +24,38 @@ const Meals = () => {
   };
 
   return (
-    <div>
-      <h3>Here are the meals we have so far:</h3>
-      <Link to="/meals/add">Add a new meal</Link>
-      {meals && meals.length > 0 && (
-        <table border="1">
-          <tbody>
-            {meals.map((m) => (
-              <tr key={m.id}>
-                <td>{m.name}</td>
-                <td>Edit</td>
-                <td>
-                  <button onClick={() => deleteMeal(m.id)}>Delete</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+    <div className="container-fluid m-4">
+      <div className="row mb-2">
+        <div className="col-md-4">
+          <Link className="btn btn-primary" to="/meals/add">
+            Add a new meal
+          </Link>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-4">
+          {meals && meals.length > 0 && (
+            <table border="1" className="table table-hover">
+              <tbody>
+                {meals.map((m) => (
+                  <tr key={m.id}>
+                    <td>{m.name}</td>
+                    <td>Edit</td>
+                    <td>
+                      <button
+                        onClick={() => deleteMeal(m.id)}
+                        className="btn btn-danger"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
