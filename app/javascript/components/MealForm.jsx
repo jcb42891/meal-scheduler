@@ -55,7 +55,11 @@ const MealForm = () => {
         </div>
         <div className="row">
           <div className="col-md-4">
-            {showSuccess && <span>Meal added successfully!</span>}
+            {showSuccess && (
+              <div class="alert alert-success" role="alert">
+                Sucessfully added meal!
+              </div>
+            )}
           </div>
         </div>
         <div className="row">
