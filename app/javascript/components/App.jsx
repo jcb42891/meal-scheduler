@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import AppRouter from "./AppRouter";
+
 const App = () => {
   let [meals, setMeals] = useState(null);
 
@@ -9,12 +11,11 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Welcome to the meal planner!</h1>
-
-      <h3>Here are the meals we have so far:</h3>
-      <ul>{meals && meals.map((m) => <li>{m.name}</li>)}</ul>
-    </div>
+    <AppRouter />
+    // <div>
+    //   <h3>Here are the meals we have so far:</h3>
+    //   <ul>{meals && meals.map((m) => <li>{m.name}</li>)}</ul>
+    // </div>
   );
 };
 export default App;

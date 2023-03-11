@@ -17,6 +17,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "react-router-dom": "^6.9.0",
     "webpack-dev-server": "3"
   }
 }
