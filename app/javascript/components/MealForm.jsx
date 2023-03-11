@@ -11,7 +11,6 @@ const MealForm = () => {
   const [showSuccess, setShowSuccess] = useState(false);
 
   const onComplete = (data) => {
-    console.log(data.status);
     if (data.status === 200) {
       setShowSuccess(true);
     }
