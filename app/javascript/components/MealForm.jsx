@@ -1,6 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
+import { httpPost } from "../helpers/httpHelper";
 
 const MealForm = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +10,12 @@ const MealForm = () => {
 
   const [showSuccess, setShowSuccess] = useState(false);
 
-  const csrfToken = document.querySelector("[name='csrf-token']").content;
+  const onComplete = (data) => {
+    console.log(data.status);
+    if (data.status === 200) {
+      setShowSuccess(true);
+    }
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -18,30 +24,7 @@ const MealForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("/api/meals/add", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": csrfToken,
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Network response was not ok.");
-        }
-      })
-      .then((data) => {
-        console.log(data.status);
-        if (data.status === 200) {
-          setShowSuccess(true);
-        }
-      })
-      .catch((error) => {
-        console.error("There was a problem with the fetch operation:", error);
-      });
+    httpPost("/api/meals/add", formData, onComplete);
   };
 
   return (
