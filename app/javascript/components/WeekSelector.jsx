@@ -11,7 +11,7 @@ const dateOffsets = {
   6: 5,
 };
 
-const WeekSelector = () => {
+const WeekSelector = (props) => {
   const [anchorDate, setAnchorDate] = useState(new Date());
 
   const findNearestPrevMonday = (today) => {
@@ -34,6 +34,7 @@ const WeekSelector = () => {
     setAnchorDate(
       new Date(currentAnchorDate.setDate(currentAnchorDate.getDate() - 7))
     );
+    props.onAnchorDateChange(new Date(currentAnchorDate));
   };
 
   const handleRightArrowClick = () => {
@@ -41,6 +42,7 @@ const WeekSelector = () => {
     setAnchorDate(
       new Date(currentAnchorDate.setDate(currentAnchorDate.getDate() + 7))
     );
+    props.onAnchorDateChange(new Date(currentAnchorDate));
   };
 
   const weekRange = getCurrentWeekRange();
