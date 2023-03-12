@@ -14,3 +14,25 @@ export const findNearestPrevMonday = (today) => {
   );
   return closestMonday;
 };
+
+export const getCurrentWeekRange = (anchorDate) => {
+  const start = new Date(findNearestPrevMonday(anchorDate));
+  const end = new Date(start);
+  end.setDate(end.getDate() + 6);
+
+  return [start.toDateString(), end.toDateString()];
+};
+
+export const enumerateWeekRange = (start) => {
+  const startDate = new Date(start);
+  let res = [];
+  res.push(startDate.toDateString());
+
+  for (let i = 1; i < 7; i++) {
+    let nextDate = new Date(startDate);
+    nextDate.setDate(startDate.getDate() + i);
+    res.push(nextDate.toDateString());
+  }
+
+  return res;
+};

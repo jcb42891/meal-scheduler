@@ -1,17 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { findNearestPrevMonday } from "../helpers/dateHelper";
+import { getCurrentWeekRange } from "../helpers/dateHelper";
 
 const WeekSelector = (props) => {
   const [anchorDate, setAnchorDate] = useState(new Date());
-
-  const getCurrentWeekRange = () => {
-    const start = new Date(findNearestPrevMonday(anchorDate));
-    const end = new Date(start);
-    end.setDate(end.getDate() + 6);
-
-    return [start.toDateString(), end.toDateString()];
-  };
 
   const handleLeftArrowClick = () => {
     const currentAnchorDate = new Date(anchorDate);
@@ -29,7 +21,7 @@ const WeekSelector = (props) => {
     props.onAnchorDateChange(new Date(currentAnchorDate));
   };
 
-  const weekRange = getCurrentWeekRange();
+  const weekRange = getCurrentWeekRange(anchorDate);
   return (
     <div className="d-flex justify-content-center align-items-center mt-4">
       <div className="d-flex flex-row">
@@ -45,7 +37,9 @@ const WeekSelector = (props) => {
             </p>
           </button>
         </div>
-        <div className="p-2">{weekRange[0] + " - " + weekRange[1]}</div>
+        <div className="p-2">
+          <h4>{weekRange[0] + " to " + weekRange[1]}</h4>
+        </div>
         <div className="ms-3">
           <button
             type="button"
