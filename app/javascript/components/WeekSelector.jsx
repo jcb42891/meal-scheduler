@@ -1,25 +1,9 @@
 import React from "react";
 import { useState } from "react";
-
-const dateOffsets = {
-  0: 6,
-  1: 0,
-  2: 1,
-  3: 2,
-  4: 3,
-  5: 4,
-  6: 5,
-};
+import { findNearestPrevMonday } from "../helpers/dateHelper";
 
 const WeekSelector = (props) => {
   const [anchorDate, setAnchorDate] = useState(new Date());
-
-  const findNearestPrevMonday = (today) => {
-    const closestMonday = today.setDate(
-      today.getDate() - dateOffsets[today.getDay()]
-    );
-    return closestMonday;
-  };
 
   const getCurrentWeekRange = () => {
     const start = new Date(findNearestPrevMonday(anchorDate));
