@@ -36,3 +36,9 @@ export const enumerateWeekRange = (start) => {
 
   return res;
 };
+
+export const ensureZonedDate = (date) => {
+  return new Date(
+    new Date(date).toUTCString().replace(" 00:00:00 GMT", "").replace(",", "")
+  ).toDateString();
+};
