@@ -3,11 +3,15 @@ Rails.application.routes.draw do
   
 
   scope(:path => '/api') do
+    # Meals controller
     get '/meals', to: 'meals#all_meals'
     get '/meals/:id', to: 'meals#get_meal'
     post '/meals/add', to: 'meals#add_meal'
     post '/meals/edit/:id', to: 'meals#edit_meal'
     delete 'meals/destroy/:id', to: 'meals#destroy_meal'
+
+    # Scheduled Meals controller
+    get '/scheduled-meals', to: 'scheduled_meals#get_all_for_anchor_date'
   end
 
   # Redirect non-api routes back to the index page,
