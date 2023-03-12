@@ -14,4 +14,14 @@ class ScheduledMealsController < ApplicationController
             render json: { status: 400, message: "No date supplied."}
         end
     end
+
+    def schedule_meal
+        schedule_date = params[:schedule_date]
+        meal_id = params[:meal_id]
+        meal_type = params[:meal_type]
+
+        ScheduledMeal.create!(user_id: 1, mealable_type: meal_type, mealable_id: meal_id, scheduled_date: Date.parse(schedule_date))
+
+        render json: { status: 200 }
+    end
 end

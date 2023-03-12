@@ -1,6 +1,8 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { useState } from "react";
+import ScheduleMealWidget from "./ScheduleMealWidget";
 
 const ScheduledMealCard = (props) => {
   return (
@@ -21,11 +23,7 @@ const ScheduledMealCard = (props) => {
             </Button>
           </>
         )}
-        {!props.scheduled && (
-          <Button className="m-2" variant="success">
-            Schedule meal
-          </Button>
-        )}
+        {!props.scheduled && <ScheduleMealWidget />}
       </Card.Body>
     </Card>
   );

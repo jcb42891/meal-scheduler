@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
     # Scheduled Meals controller
     get '/scheduled-meals', to: 'scheduled_meals#get_all_for_anchor_date'
+    post '/schedule-meal', to: 'scheduled_meals#schedule_meal'
   end
 
   # Redirect non-api routes back to the index page,
