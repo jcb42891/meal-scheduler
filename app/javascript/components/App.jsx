@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import AppRouter from "./AppRouter";
+import SiteNavbar from "./SiteNavbar";
 
 const App = () => {
-  return <AppRouter />;
+  return (
+    <>
+      <SiteNavbar />
+      <AppRouter />
+    </>
+  );
 };
 export default App;
