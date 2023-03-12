@@ -12,4 +12,5 @@
 class HomeCookedMeal < ApplicationRecord
     attr_accessor :ingredients
     has_many :ingredients, class_name: 'Ingredient'
+    has_one :scheduled_meal, as: :mealable
 end
