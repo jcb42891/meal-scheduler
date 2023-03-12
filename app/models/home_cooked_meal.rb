@@ -10,4 +10,6 @@
 #
 
 class HomeCookedMeal < ApplicationRecord
+    attr_accessor :ingredients
+    has_many :ingredients, class_name: 'Ingredient'
 end
