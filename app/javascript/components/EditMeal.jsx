@@ -1,17 +1,24 @@
 import React from "react";
 import MealForm from "./MealForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { httpPost } from "../helpers/httpHelper";
 import { useParams } from "react-router-dom";
 
 const EditMeal = () => {
   const [showSuccess, setShowSuccess] = useState(false);
+  const [meal, setMeal] = useState(null);
   const mealIdToEdit = useParams().id;
+
+  useEffect(() => {
+    fetch(`/api/meals/${mealIdToEdit}`)
+      .then((response) => response.json())
+      .then((data) => setMeal(data));
+  }, []);
 
   const handleSubmit = (event, formData) => {
     event.preventDefault();
-    httpPost(`/api/meals/edit/${mealIdToEdit}`, formData, onComplete);
+    httpPost(`/api/meals/edit/${meal.id}`, formData, onComplete);
   };
 
   const onComplete = (data) => {
@@ -22,7 +29,7 @@ const EditMeal = () => {
 
   return (
     <div className="container-fluid">
-      <MealForm onSubmit={handleSubmit} />
+      <MealForm onSubmit={handleSubmit} name={meal ? meal.name : ""} />
       <div className="row">
         <div className="col-md-4">
           {showSuccess && (

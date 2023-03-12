@@ -5,6 +5,11 @@ class MealsController < ApplicationController
         render json: @meals
     end
 
+    def get_meal
+        @meal = HomeCookedMeal.find_by(id: params[:id])
+        render json: @meal
+    end
+
     def add_meal
         name = params[:name]
         HomeCookedMeal.create!(user_id: 1, name: name)

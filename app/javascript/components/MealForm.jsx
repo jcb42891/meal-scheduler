@@ -25,7 +25,7 @@ const MealForm = (props) => {
                   type="text"
                   id="name"
                   name="name"
-                  value={formData.name}
+                  value={formData.name ? formData.name : props.name}
                   onChange={handleInputChange}
                   className="form-control"
                 />
