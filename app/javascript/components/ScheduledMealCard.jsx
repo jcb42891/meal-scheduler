@@ -8,20 +8,19 @@ const ScheduledMealCard = (props) => {
   return (
     <Card
       border={!props.scheduled ? "danger" : "success"}
-      style={{ width: "30rem" }}
+      style={{ width: "10rem", height: "15rem" }}
     >
       <Card.Body style={!props.scheduled ? { backgroundColor: "#dbdad7" } : {}}>
         <Card.Title>{new Date(props.title).toDateString()}</Card.Title>
-        <Card.Text>{props.text}</Card.Text>
+        <div style={{ height: "25%" }}>
+          <Card.Text>{props.text}</Card.Text>
+        </div>
         {props.scheduled && (
-          <>
-            <Button className="m-2" variant="primary">
-              View meal
-            </Button>
+          <div style={{ height: "20%" }}>
             <Button className="m-2" variant="warning">
               Reschedule
             </Button>
-          </>
+          </div>
         )}
         {!props.scheduled && <ScheduleMealWidget />}
       </Card.Body>
