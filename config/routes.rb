@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   scope(:path => '/api') do
     get '/meals', to: 'meals#all_meals'
     post '/meals/add', to: 'meals#add_meal'
+    post '/meals/edit/:id', to: 'meals#edit_meal'
     delete 'meals/destroy/:id', to: 'meals#destroy_meal'
   end
 

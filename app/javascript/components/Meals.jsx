@@ -40,7 +40,11 @@ const Meals = () => {
                 {meals.map((m) => (
                   <tr key={m.id}>
                     <td>{m.name}</td>
-                    <td>Edit</td>
+                    <td>
+                      <Link to={`/meals/edit/${m.id}`} className="btn btn-info">
+                        Edit
+                      </Link>
+                    </td>
                     <td>
                       <button
                         onClick={() => deleteMeal(m.id)}

@@ -10,6 +10,13 @@ class MealsController < ApplicationController
         HomeCookedMeal.create!(user_id: 1, name: name)
         render json: { status: 200 }
     end
+
+    def edit_meal
+        meal_to_edit = HomeCookedMeal.find_by(id: params[:id])
+        updated_name = params[:name]
+        meal_to_edit.update!(name: updated_name)
+        render json: { status: 200 }
+    end
     
     def destroy_meal
         meal_to_destroy = HomeCookedMeal.find_by(id: params[:id])
