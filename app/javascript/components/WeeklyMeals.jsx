@@ -22,7 +22,7 @@ const WeeklyMeals = (props) => {
   }, [props.anchorDate]);
 
   return (
-    <div className="d-flex flex-wrap justify-content-center align-items-center">
+    <div className="d-flex flex-column justify-content-center align-items-center">
       {weekRange &&
         weekRange.map((day) => {
           let mealToRender = null;
