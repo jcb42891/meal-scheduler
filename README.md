@@ -1,6 +1,4 @@
-# README
-
-## Summary
+##  :construction: Meal Scheduler (WIP)  :construction:
 
 This app is a tool to help plan daily/weekly meals and offers the following features:
 
