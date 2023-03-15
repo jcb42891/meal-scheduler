@@ -3,7 +3,7 @@ import React from "react";
 
 const MealForm = (props) => {
   const [formData, setFormData] = useState({
-    name: "",
+    name: undefined,
   });
 
   const handleInputChange = (event) => {
@@ -25,7 +25,9 @@ const MealForm = (props) => {
                   type="text"
                   id="name"
                   name="name"
-                  value={formData.name ? formData.name : props.name}
+                  value={
+                    formData.name !== undefined ? formData.name : props.name
+                  }
                   onChange={handleInputChange}
                   className="form-control"
                 />
