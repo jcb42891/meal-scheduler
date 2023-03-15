@@ -39,4 +39,6 @@
 yarn-debug.log*
 .yarn-integrity
 
+# local notes
 schema_notes.txt
+todos.txt

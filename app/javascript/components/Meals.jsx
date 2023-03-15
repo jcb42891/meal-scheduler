@@ -39,7 +39,9 @@ const Meals = () => {
               <tbody>
                 {meals.map((m) => (
                   <tr key={m.id}>
-                    <td>{m.name}</td>
+                    <td>
+                      <Link to={`/meals/view/${m.id}`}>{m.name}</Link>
+                    </td>
                     <td>
                       <Link to={`/meals/edit/${m.id}`} className="btn btn-info">
                         Edit
