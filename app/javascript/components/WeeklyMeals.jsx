@@ -36,18 +36,20 @@ const WeeklyMeals = (props) => {
             )[0];
           }
           return (
-            <div className="p-3" key={new Date(day).toDateString()}>
-              <ScheduledMealCard
-                title={day}
-                text={
-                  mealToRender
-                    ? mealToRender.description
-                    : "No meal scheduled yet"
-                }
-                scheduled={mealToRender ? true : false}
-                scheduledMealId={mealToRender?.id}
-                handleDataChange={fetchScheduledMeals}
-              />
+            <div className="d-flex flex-column" style={{ width: "60%" }}>
+              <div className="p-3" key={new Date(day).toDateString()}>
+                <ScheduledMealCard
+                  title={day}
+                  text={
+                    mealToRender
+                      ? mealToRender.description
+                      : "No meal scheduled yet"
+                  }
+                  scheduled={mealToRender ? true : false}
+                  scheduledMealId={mealToRender?.id}
+                  handleDataChange={fetchScheduledMeals}
+                />
+              </div>
             </div>
           );
         })}

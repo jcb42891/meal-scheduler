@@ -22,7 +22,7 @@ const ScheduledMealCard = (props) => {
   return (
     <Card
       border={!props.scheduled ? "danger" : "success"}
-      style={{ width: "30rem" }}
+      style={{ minWidth: "100%" }}
     >
       <Card.Body style={!props.scheduled ? { backgroundColor: "#dbdad7" } : {}}>
         <Card.Title>{scheduledDate}</Card.Title>
@@ -37,9 +37,9 @@ const ScheduledMealCard = (props) => {
                 rescheduleMeal();
               }}
               className="m-2"
-              variant="warning"
+              variant="danger"
             >
-              Reschedule
+              Remove
             </Button>
           </>
         )}

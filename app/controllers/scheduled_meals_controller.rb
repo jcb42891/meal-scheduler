@@ -9,7 +9,6 @@ class ScheduledMealsController < ApplicationController
             @scheduled_meals.each do |scheduled_meal|
                 res << { description: scheduled_meal.mealable.name, scheduled_date: scheduled_meal.scheduled_date, id: scheduled_meal.id}
             end
-            puts res
             render json: res
         else
             render json: { status: 400, message: "No date supplied."}
@@ -22,7 +21,6 @@ class ScheduledMealsController < ApplicationController
 
         ScheduledMeal.create!(user_id: 1, mealable_type: "HomeCookedMeal", mealable_id: meal_id, scheduled_date: Date.parse(schedule_date))
         render json: { status: 200 }
-
     end
 
     def destroy_scheduled_meal
