@@ -5,13 +5,15 @@ import { useState } from "react";
 import ScheduleMealWidget from "./ScheduleMealWidget";
 
 const ScheduledMealCard = (props) => {
+  const scheduledDate = new Date(props.title).toDateString();
+
   return (
     <Card
       border={!props.scheduled ? "danger" : "success"}
       style={{ width: "30rem" }}
     >
       <Card.Body style={!props.scheduled ? { backgroundColor: "#dbdad7" } : {}}>
-        <Card.Title>{new Date(props.title).toDateString()}</Card.Title>
+        <Card.Title>{scheduledDate}</Card.Title>
         <Card.Text>{props.text}</Card.Text>
         {props.scheduled && (
           <>
@@ -23,7 +25,12 @@ const ScheduledMealCard = (props) => {
             </Button>
           </>
         )}
-        {!props.scheduled && <ScheduleMealWidget />}
+        {!props.scheduled && (
+          <ScheduleMealWidget
+            handleDataChange={props.handleDataChange}
+            scheduledDate={scheduledDate}
+          />
+        )}
       </Card.Body>
     </Card>
   );

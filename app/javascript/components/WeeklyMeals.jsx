@@ -13,12 +13,16 @@ const WeeklyMeals = (props) => {
   const [scheduledMeals, setScheduledMeals] = useState(null);
   const weekRange = enumerateWeekRange(props.anchorDate);
 
-  useEffect(() => {
+  const fetchScheduledMeals = () => {
     fetch(`/api/scheduled-meals?anchor_date=${props.anchorDate}`)
       .then((response) => response.json())
       .then((data) => {
         setScheduledMeals(data);
       });
+  };
+
+  useEffect(() => {
+    fetchScheduledMeals();
   }, [props.anchorDate]);
 
   return (
@@ -41,6 +45,7 @@ const WeeklyMeals = (props) => {
                     : "No meal scheduled yet"
                 }
                 scheduled={mealToRender ? true : false}
+                handleDataChange={fetchScheduledMeals}
               />
             </div>
           );

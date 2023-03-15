@@ -16,11 +16,10 @@ class ScheduledMealsController < ApplicationController
     end
 
     def schedule_meal
-        schedule_date = params[:schedule_date]
+        schedule_date = params[:scheduled_date]
         meal_id = params[:meal_id]
-        meal_type = params[:meal_type]
 
-        ScheduledMeal.create!(user_id: 1, mealable_type: meal_type, mealable_id: meal_id, scheduled_date: Date.parse(schedule_date))
+        ScheduledMeal.create!(user_id: 1, mealable_type: "HomeCookedMeal", mealable_id: meal_id, scheduled_date: Date.parse(schedule_date))
 
         render json: { status: 200 }
     end
