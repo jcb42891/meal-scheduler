@@ -14,7 +14,6 @@ const ScheduleMealWidget = (props) => {
 
   const handleInputChange = (event) => {
     const value = event.target.value;
-    console.log(value);
     setFormData((prevState) => ({
       ...prevState,
       meal_id: value,
@@ -38,12 +37,10 @@ const ScheduleMealWidget = (props) => {
 
   const scheduleMeal = (event) => {
     event.preventDefault();
-    console.log("FORM DATA: ", formData);
     httpPost("/api/schedule-meal", formData, onComplete);
   };
 
   const onComplete = (data) => {
-    console.log(data);
     props.handleDataChange();
   };
 

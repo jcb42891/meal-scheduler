@@ -3,9 +3,21 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useState } from "react";
 import ScheduleMealWidget from "./ScheduleMealWidget";
+import { httpDelete, httpPost } from "../helpers/httpHelper";
 
 const ScheduledMealCard = (props) => {
   const scheduledDate = new Date(props.title).toDateString();
+
+  const rescheduleMeal = () => {
+    httpDelete(
+      `/api/scheduled-meal/destroy/${props.scheduledMealId}`,
+      afterReschedule
+    );
+  };
+
+  const afterReschedule = () => {
+    props.handleDataChange();
+  };
 
   return (
     <Card
@@ -20,7 +32,13 @@ const ScheduledMealCard = (props) => {
             <Button className="m-2" variant="primary">
               View meal
             </Button>
-            <Button className="m-2" variant="warning">
+            <Button
+              onClick={() => {
+                rescheduleMeal();
+              }}
+              className="m-2"
+              variant="warning"
+            >
               Reschedule
             </Button>
           </>

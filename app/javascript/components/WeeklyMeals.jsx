@@ -45,6 +45,7 @@ const WeeklyMeals = (props) => {
                     : "No meal scheduled yet"
                 }
                 scheduled={mealToRender ? true : false}
+                scheduledMealId={mealToRender?.id}
                 handleDataChange={fetchScheduledMeals}
               />
             </div>

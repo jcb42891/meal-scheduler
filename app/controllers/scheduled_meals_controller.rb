@@ -7,8 +7,9 @@ class ScheduledMealsController < ApplicationController
 
             res = []
             @scheduled_meals.each do |scheduled_meal|
-                res << { description: scheduled_meal.mealable.name, scheduled_date: scheduled_meal.scheduled_date}
+                res << { description: scheduled_meal.mealable.name, scheduled_date: scheduled_meal.scheduled_date, id: scheduled_meal.id}
             end
+            puts res
             render json: res
         else
             render json: { status: 400, message: "No date supplied."}
@@ -20,7 +21,16 @@ class ScheduledMealsController < ApplicationController
         meal_id = params[:meal_id]
 
         ScheduledMeal.create!(user_id: 1, mealable_type: "HomeCookedMeal", mealable_id: meal_id, scheduled_date: Date.parse(schedule_date))
+        render json: { status: 200 }
 
+    end
+
+    def destroy_scheduled_meal
+        scheduled_meal_to_delete = ScheduledMeal.find_by(id: params[:id])
+
+        if scheduled_meal_to_delete
+            scheduled_meal_to_delete.destroy!
+        end
         render json: { status: 200 }
     end
 end
