@@ -8,16 +8,20 @@ import {
   ensureZonedDate,
 } from "../helpers/dateHelper";
 import ScheduledMealCard from "./ScheduledMealCard";
+import { Audio } from "react-loader-spinner";
 
 const WeeklyMeals = (props) => {
   const [scheduledMeals, setScheduledMeals] = useState(null);
+  const [loading, setLoading] = useState(false);
   const weekRange = enumerateWeekRange(props.anchorDate);
 
   const fetchScheduledMeals = () => {
+    setLoading(true);
     fetch(`/api/scheduled-meals?anchor_date=${props.anchorDate}`)
       .then((response) => response.json())
       .then((data) => {
         setScheduledMeals(data);
+        setLoading(false);
       });
   };
 
@@ -27,6 +31,18 @@ const WeeklyMeals = (props) => {
 
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
+      {loading && (
+        <Audio
+          height="80"
+          width="80"
+          radius="9"
+          color="green"
+          ariaLabel="loading"
+          wrapperStyle
+          wrapperClass
+        />
+      )}
+
       {weekRange &&
         weekRange.map((day) => {
           let mealToRender = null;
