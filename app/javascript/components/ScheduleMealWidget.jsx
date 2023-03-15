@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { httpPost } from "../helpers/httpHelper";
+import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 const ScheduleMealWidget = (props) => {
   const [formVisible, setFormVisible] = useState(false);
@@ -12,11 +13,10 @@ const ScheduleMealWidget = (props) => {
     scheduled_date: "",
   });
 
-  const handleInputChange = (event) => {
-    const value = event.target.value;
+  const handleOnSelect = (item) => {
     setFormData((prevState) => ({
       ...prevState,
-      meal_id: value,
+      meal_id: item.id,
       scheduled_date: props.scheduledDate,
     }));
   };
@@ -58,17 +58,17 @@ const ScheduleMealWidget = (props) => {
       {formVisible && (
         <Form onSubmit={() => scheduleMeal(event)}>
           <Form.Group className="mb-3" controlId="formMealSelect">
-            <Form.Label>Meal</Form.Label>
-            <Form.Select onChange={handleInputChange}>
-              <option>select one...</option>
-              {dropDownMealChoices &&
-                dropDownMealChoices.length > 0 &&
-                dropDownMealChoices.map((meal) => (
-                  <option key={meal.id} value={meal.id}>
-                    {meal.name}
-                  </option>
-                ))}
-            </Form.Select>
+            <Form.Label>
+              <b>Select a meal to schedule:</b>
+            </Form.Label>
+            {dropDownMealChoices && dropDownMealChoices.length > 0 && (
+              <ReactSearchAutocomplete
+                items={dropDownMealChoices}
+                onSelect={handleOnSelect}
+                name="meal"
+                autoFocus
+              />
+            )}
           </Form.Group>
           <Button className="m-2" variant="success" type="submit">
             Schedule!

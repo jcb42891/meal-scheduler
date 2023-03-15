@@ -36,8 +36,12 @@ const WeeklyMeals = (props) => {
             )[0];
           }
           return (
-            <div className="d-flex flex-column" style={{ width: "60%" }}>
-              <div className="p-3" key={new Date(day).toDateString()}>
+            <div
+              className="d-flex flex-column"
+              style={{ width: "60%" }}
+              key={new Date(day).toDateString()}
+            >
+              <div className="p-3">
                 <ScheduledMealCard
                   title={day}
                   text={
